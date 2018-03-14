@@ -7,16 +7,26 @@ var express 		= require("express"),
     passport 		= require("passport"),
     bodyParser 		= require("body-parser"),
     LocalStrategy 	= require("passport-local"),
-    passportLocalMongoose = require("passport-local-mongoose");
-
+    passportLocalMongoose = require("passport-local-mongoose"),
+    User 		= require("./models/user");
 mongoose.connect("mongodb://localhost/ftm_intranet");
-
 
 var port = 80;
 var app = express();
 
 app.use(express.static("public"));
 app.set("view engine", "ejs");
+
+app.use(require("express-session")({
+  secret: "This is Sparta",
+  resave: "false",
+  saveUninitialized: "false"
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 
 app.get("/", function (req, res) {
   res.render("home");
@@ -60,5 +70,5 @@ app.get("*", function (req, res) {
 })
 
 app.listen(port, function () {
-  console.log("Example app listening on "+port+"!");
+  console.log("FTM intranet is up and running on "+port+"!");
 });
