@@ -1,0 +1,147 @@
+body {
+    overflow-x: hidden;
+    text-align: center;
+    color: #2c3e50;
+    background: #d3dad7;
+    height: 100%;
+    width: 100%;
+}
+
+img {
+    display: block;
+    margin: 0 auto 20px;
+}
+
+p {
+    font-size: 20px;
+}
+
+p.small {
+    font-size: 16px;
+}
+
+a,
+a:hover,
+a:focus,
+a:active,
+a.active {
+    outline: 0;
+    color: #2c3e50;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+}
+
+h1{
+
+	text-size:3em;
+}
+
+h2 {
+	text-size:1em;
+}
+
+h5{
+
+	text-size:1em;
+}
+
+
+
+.star-light,
+.star-primary {
+    margin: 25px auto 30px;
+    padding: 0;
+    max-width: 250px;
+    border: 0;
+    border-top: solid 5px;
+    text-align: center;
+}
+
+.star-light:after,
+.star-primary:after {
+    content: "\f005";
+    display: inline-block;
+    position: relative;
+    top: -.8em;
+    padding: 0 .25em;
+    font-family: FontAwesome;
+    font-size: 2em;
+}
+
+.star-light {
+    border-color: #2c3e50;
+}
+
+.star-light:after {
+    color: #2c3e50;
+    background-color: #d3dad7;
+}
+
+.star-primary {
+    border-color: #2c3e50;
+}
+
+.star-primary:after {
+    color: #2c3e50;
+    background-color: #fff;
+}
+
+.img-centered {
+    margin: 0 auto;
+}
+
+.intro-text .name {
+    display: block;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.intro-text .skills {
+    font-size: 1.25em;
+    font-weight: 300;
+}
+
+.container {
+        padding: 4% 0 0 0;
+    }
+
+
+@media(min-width:768px) {
+    .container {
+        padding: 4% 0 0 0;
+    }
+
+    .intro-text .name {
+        font-size: 2.5em;
+    }
+
+    .intro-text .skills {
+        font-size: 1.6em;
+    }
+}
+
+.social{
+    margin-top: 20px;
+}
+
+.btn-social {
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    border: 2px solid #2c3e50;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 1.6em;
+    line-height: 1.75em;
+}
