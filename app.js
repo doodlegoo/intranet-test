@@ -2,7 +2,15 @@
 // Base found on expressjs.com - hello world
 //
 
-var express = require("express");
+var express 		= require("express"),
+    mongoose 		= require("mongoose"),
+    passport 		= require("passport"),
+    bodyParser 		= require("body-parser"),
+    LocalStrategy 	= require("passport-local"),
+    passportLocalMongoose = require("passport-local-mongoose");
+
+mongoose.connect("mongodb://localhost/ftm_intranet");
+
 
 var port = 80;
 var app = express();
@@ -12,6 +20,14 @@ app.set("view engine", "ejs");
 
 app.get("/", function (req, res) {
   res.render("home");
+})
+
+app.get("/login", function (req,res) {
+  res.render("login");
+})
+
+app.get("/secret", function (req,res) {
+  res.render("secret");
 })
 
 app.get("/speak/:animal", function (req, res) {
