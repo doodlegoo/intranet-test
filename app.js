@@ -16,7 +16,7 @@ var app = express();
 
 app.use(express.static("public"));
 app.set("view engine", "ejs");
-
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(require("express-session")({
   secret: "This is Sparta",
   resave: "false",
@@ -24,17 +24,26 @@ app.use(require("express-session")({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+/* 
+ROUTES
+*/
 
 
 app.get("/", function (req, res) {
   res.render("home");
 })
 
-app.get("/login", function (req,res) {
-  res.render("login");
+app.get("/userpage", isLoggedIn ,function (req,res) {
+  if(true)
+
+  res.render("userpage");
 })
+
 
 app.get("/secret", function (req,res) {
   res.render("secret");
@@ -56,6 +65,48 @@ app.get("/ejs", function (req, res) {
   res.render("index",{sparta: "THIS IS SPARTA"});
 })
 
+
+
+// Auth routes
+
+// Show things
+app.get("/login", function (req,res) {
+  res.render("login");
+})
+
+app.get("/signup", function (req, res){
+  res.render("signup")
+
+});
+
+app.get("/logout", function (req, res){
+  req.logout();
+  res.redirect("/login")
+});
+
+
+// handles things
+app.post("/signup", function(req, res){
+  req.body.username;
+  req.body.password;
+  User.register(new User({username: req.body.username }), req.body.password, function(err, user){
+    if(err){
+      console.log(err);
+      return res.render('signup');
+    }    
+    passport.authenticate("local")(req, res, function(){
+      res.redirect("/secret");
+    });    
+  });
+});
+
+app.post("/login", passport.authenticate("local", {successRedirect:"/userpage", failureRedirect:"/login"}) ,function(req, res){
+  
+
+});
+
+
+
 app.get("/repeat/:word/:repet", function (req, res) {
   var text = "";
   for(var i =0 ; i<req.params.repet;i++){
@@ -63,11 +114,18 @@ app.get("/repeat/:word/:repet", function (req, res) {
     text += "   ";
   }
 res.send(text+"   ");
-})
+});
 
 app.get("*", function (req, res) {
   res.send("ERROR 404!");
-})
+});
+
+function isLoggedIn(req, res, next){
+  if(req.isAuthenticated()){
+    return next();
+  }
+    res.redirect("/login");
+};
 
 app.listen(port, function () {
   console.log("FTM intranet is up and running on "+port+"!");
