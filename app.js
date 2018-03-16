@@ -39,9 +39,8 @@ app.get("/", function (req, res) {
 })
 
 app.get("/userpage", isLoggedIn ,function (req,res) {
-  if(true)
-
-  res.render("userpage");
+  console.log(req.user);
+  res.render("userpage", {currentUser: req.user});
 })
 
 
@@ -58,7 +57,7 @@ app.get("/dog", function (req, res) {
 })
 
 app.get("/cat", function (req, res) {
-  res.send("Pussies");
+  res.send("P");
 })
 
 app.get("/ejs", function (req, res) {
@@ -89,7 +88,7 @@ app.get("/logout", function (req, res){
 app.post("/signup", function(req, res){
   req.body.username;
   req.body.password;
-  User.register(new User({username: req.body.username }), req.body.password, function(err, user){
+  User.register(new User({username: req.body.username, name: req.body.name }), req.body.password, function(err, user){
     if(err){
       console.log(err);
       return res.render('signup');

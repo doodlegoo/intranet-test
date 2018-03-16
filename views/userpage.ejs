@@ -1,7 +1,20 @@
 <% include partials/ftm-head.ejs %>
 
-This is the userpage --
 
-<a href="/logout">Logout</a>
+<div class="col-md-4"></div>
+			
+<div class="col-md-4">
+  <section class="userpage">
+    <h1> Salut <%=currentUser.name %></h1>
+     <a href="https://financetoimieux.typeform.com/to/seakzh?user=
+<%=currentUser.username%>" class="btn btn-primary btn-block" target="_blank">Suivi de RV</a>
 
+<a href="https://financetoimieux.typeform.com/to/eGESTs?channel=intranet" class="btn btn-success btn-block">Marge de crédit étudiante</a>
 
+  This is your userpage -- <a href="/logout" class="btn btn-danger">Logout</a>
+
+  </section>  
+
+</div>
+
+<div class="col-md-4"></div>
