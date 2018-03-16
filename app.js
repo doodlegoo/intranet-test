@@ -14,7 +14,7 @@ var express 		= require("express"),
 mongoose.connect("mongodb://vince:ftm2018@ds139899.mlab.com:39899/ftm-user");
 
 
-var port = 80;
+var port = 8080;
 var app = express();
 
 app.use(express.static("public"));
