@@ -9,7 +9,10 @@ var express 		= require("express"),
     LocalStrategy 	= require("passport-local"),
     passportLocalMongoose = require("passport-local-mongoose"),
     User 		= require("./models/user");
-mongoose.connect("mongodb://localhost/ftm_intranet");
+
+// mongoose.connect("mongodb://localhost/ftm_intranet");
+mongoose.connect("mongodb://vince:ftm2018@ds139899.mlab.com:39899/ftm-user");
+
 
 var port = 80;
 var app = express();
