@@ -87,11 +87,12 @@ form[role=login] {
   }
 
 .userpage{
+        margin-top: 60px;
         color: #5d5d5d;
         background: #f2f2f2;
         padding: 26px;
         border-radius: 10px;
         -moz-border-radius: 10px;
         -webkit-border-radius: 10px;
-
+	
 }

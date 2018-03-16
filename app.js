@@ -68,7 +68,11 @@ app.get("/ejs", function (req, res) {
   res.render("index",{sparta: "THIS IS SPARTA"});
 })
 
-
+app.get("/login-error", function(req,res){
+//  res.send("Erreur de login"); 
+//  window.alert("erreur de login");
+  res.redirect("/login");
+});
 
 // Auth routes
 
@@ -95,6 +99,7 @@ app.post("/signup", function(req, res){
   User.register(new User({username: req.body.username, name: req.body.name }), req.body.password, function(err, user){
     if(err){
       console.log(err);
+      alert("Erreur de creation");
       return res.render('signup');
     }    
     passport.authenticate("local")(req, res, function(){
@@ -103,7 +108,7 @@ app.post("/signup", function(req, res){
   });
 });
 
-app.post("/login", passport.authenticate("local", {successRedirect:"/userpage", failureRedirect:"/login"}) ,function(req, res){
+app.post("/login", passport.authenticate("local", {successRedirect:"/userpage", failureRedirect:"/login-error"}) ,function(req, res){
   
 
 });
