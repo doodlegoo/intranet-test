@@ -38,7 +38,8 @@ ROUTES
 
 
 app.get("/", function (req, res) {
-  res.render("home");
+//  res.render("home");
+  res.redirect("/login");
 })
 
 app.get("/userpage", isLoggedIn ,function (req,res) {
