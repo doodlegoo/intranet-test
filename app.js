@@ -14,7 +14,7 @@ var express 		= require("express"),
 mongoose.connect("mongodb://vince:ftm2018@ds139899.mlab.com:39899/ftm-user");
 
 
-var port = 5454;
+var port = 80;
 var app = express();
 
 app.use(express.static("public"));
@@ -129,6 +129,6 @@ function isLoggedIn(req, res, next){
     res.redirect("/login");
 };
 
-app.listen(port, function () {
+app.listen(process.env.PORT || port, function () {
   console.log("FTM intranet is up and running on "+port+"!");
 });
