@@ -42,9 +42,9 @@ app.get("/", function (req, res) {
   res.redirect("/login");
 })
 
-app.get("/userpage", isLoggedIn ,function (req,res) {
+app.get("/associe", isLoggedIn ,function (req,res) {
   console.log(req.user);
-  res.render("userpage", {currentUser: req.user});
+  res.render("associe", {currentUser: req.user});
 })
 
 
@@ -108,8 +108,13 @@ app.post("/signup", function(req, res){
   });
 });
 
-app.post("/login", passport.authenticate("local", {successRedirect:"/userpage", failureRedirect:"/login-error"}) ,function(req, res){
-  
+app.post("/login", passport.authenticate("local", {successRedirect:"/associe", failureRedirect:"/login-error"}) ,function(req, res){
+//  if(associe)
+//    redirect(associe)
+//  if (ftm)
+//    redirect(ftm)
+//  else
+//    redirect (conseiller)
 
 });
 
