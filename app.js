@@ -42,9 +42,9 @@ app.get("/", function (req, res) {
   res.redirect("/login");
 })
 
-app.get("/associe", isLoggedIn ,function (req,res) {
+app.get("/user", isLoggedIn ,function (req,res) {
   console.log(req.user);
-  res.render("associe", {currentUser: req.user});
+  res.render("user", {currentUser: req.user});
 })
 
 
@@ -96,7 +96,7 @@ app.get("/logout", function (req, res){
 app.post("/signup", function(req, res){
   req.body.username;
   req.body.password;
-  User.register(new User({username: req.body.username, name: req.body.name }), req.body.password, function(err, user){
+  User.register(new User({username: req.body.username, name: req.body.name, role: req.body.role }), req.body.password, function(err, user){
     if(err){
       console.log(err);
       alert("Erreur de creation");
@@ -108,7 +108,7 @@ app.post("/signup", function(req, res){
   });
 });
 
-app.post("/login", passport.authenticate("local", {successRedirect:"/associe", failureRedirect:"/login-error"}) ,function(req, res){
+app.post("/login", passport.authenticate("local", {successRedirect:"/user", failureRedirect:"/login-error"}) ,function(req, res){
 //  if(associe)
 //    redirect(associe)
 //  if (ftm)
