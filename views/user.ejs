@@ -9,18 +9,18 @@
      <h1> Salut <%=currentUser.name %></h1>
 <% if(currentUser.role=="directeur"){ %>
   <div class="btn-group">
-     <a href="https://financetoimieux.typeform.com/to/seakzh?user=<%=currentUser.username%> " class="btn btn-primary" target="_blank">Suivi de RV</a>
-     <a href="https://financetoimieux.typeform.com/to/eGESTs?channel=intranet" class="btn btn-success" target="_blank">Marge de crédit étudiante</a>
+     <a href="https://financetoimieux.typeform.com/to/seakzh?user=<%=currentUser.username%> " class="btn btn-primary" target="_blank">Retour sur rencontre</a>
+     <a href="https://financetoimieux.typeform.com/to/eGESTs?channel=intranet" class="btn btn-success" target="_blank">Offre bancaire étudiante</a>
      <a href="https://datastudio.google.com/open/1VEfek3Nd5IyBo3q7xv2W7-4zIdOQPLCs" class="btn btn-info" target="_blank">Suivi concours GFTM</a>
      <a href="https://datastudio.google.com/open/1uPo7fE9qP-EeiwpKVEhW4y1Y2cZWUDHP" class="btn btn-info" target="_blank">Suivi réf pour GFTM</a>
-     <a href="#" class="btn btn-primary" target="_blank">Tableau de bord - suivi de rendez-vous (À VENIR)  </a>
+     <a href="#" class="btn btn-primary" >Tableau de bord - suivi de rendez-vous (À VENIR)  </a>
   </div>
 <%} %>
 
 <% if(currentUser.role=="conseiller"){ %>
   <div class="btn-group">
-     <a href="https://financetoimieux.typeform.com/to/seakzh?user=<%=currentUser.username%> " class="btn btn-primary" target="_blank">Suivi de RV</a>
-     <a href="https://financetoimieux.typeform.com/to/eGESTs?channel=intranet" class="btn btn-success" target="_blank">Marge de crédit étudiante</a>
+     <a href="https://financetoimieux.typeform.com/to/seakzh?user=<%=currentUser.username%> " class="btn btn-primary" target="_blank">Retour sur rencontre</a>
+     <a href="https://financetoimieux.typeform.com/to/eGESTs?channel=intranet" class="btn btn-success" target="_blank">Offre bancaire étudiante</a>
   </div>
 
   <% if(currentUser.region=="Gatineau"){ %>

@@ -52,6 +52,11 @@ app.get("/secret", function (req,res) {
   res.render("secret");
 })
 
+app.get("/associe", function (req,res) {
+  res.redirect("/user");
+})
+
+
 app.get("/speak/:animal", function (req, res) {
   res.send("The "+(req.params.animal).toUpperCase()+" says something");
 })
