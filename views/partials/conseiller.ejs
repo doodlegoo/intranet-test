@@ -1,0 +1,19 @@
+<div class="btn-group">
+     <a href="https://financetoimieux.typeform.com/to/seakzh?user=<%=currentUser.username%>&name=<%=currentUser.name%>" class="btn btn-primary" target="_blank">Retour sur rencontre</a>
+     <a href="h://financetoimieux.typeform.com/to/eGESTs?channel=intranet" class="btn btn-success" target="_blank">Offre bancaire étudiante</a>
+  </div>
+
+  <div class=" btn-group">
+    <p></p>
+    <a href="http://www.afe.gouv.qc.ca/prets-et-boursesetudes-a-temps-plein/calcul-de-laide/simulateur-de-calcul" class="btn" target="_blank">Lien vers l'AFE</a>
+    <a href= "#"></a>
+  </div>
+  <% if(currentUser.region=="Gatineau"){ %>
+    <a href="">Tableau de suivi <%=currentUser.region %> </a>
+  <%} %>
+
+  <% if(currentUser.region=="Montreal"){ %>
+    <a href="">Tableau de suivi <%=currentUser.region %> </a>
+  <%} %>
+
+
