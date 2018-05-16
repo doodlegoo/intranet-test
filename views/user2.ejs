@@ -1,11 +1,12 @@
 <% include partials/ftm-head.ejs %>
 
+<div class="wrapper"  >
+<% include partials/navbar.ejs %>
 
-<div class="col-md-4"></div>
+<div class="col-md-3"></div>
 			
-<div class="col-md-4">
+<div class="col-md-9">
   <section class="userpage">
-     <img src="ftm.png" class="img-responsive" alt="ftm-logo" />
      <h1> Salut <%=currentUser.name %></h1>
 <% if(currentUser.role=="directeur" || currentUser.role=="god" ){ %>
   <% include partials/directeur.ejs %>
@@ -23,26 +24,21 @@
 <%} %>
 
 
-<div class="row">
-<p>Ressources FTM</p>
-    <button class="btn-warning" href="http://www.afe.gouv.qc.ca/prets-et-boursesetudes-a-temps-plein/calcul-de-laide/simulateur-de-calcul" class="btn" target="_blank">Lien vers l'AFE</button>
-</div>
 
-<div class="row m-5">
-<p>Liens utiles</p>
+
 <ul class="nav nav-pills nav-stacked">
   <li class=""><a href="https://secure.kronos-web.com/" class="" target="_blank">Accéder à Kronos</a></li>
   <li class=""><a href="https://gestionftm.facebook.com/" class="" target="_blank">Accéder à Workplace</a></li>
   <li class=""><a href="https://financetoimieux.ca/" class="" target="_blank">Accéder à Financetoimieux</a></li>
 </ul>
-</div>
 
-
-<div class="row">
+<div>
   This is your userpage -- <a href="/logout" class="btn btn-danger">Logout</a>
 </div>
   </section>  
 
 </div>
 
-<div class="col-md-4"></div>
+
+
+</div>

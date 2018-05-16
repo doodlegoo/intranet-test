@@ -39,7 +39,7 @@ ROUTES
 
 app.get("/", function (req, res) {
 //  res.render("home");
-  res.redirect("/login");
+  res.redirect("/login2");
 })
 
 app.get("/user", isLoggedIn ,function (req,res) {
@@ -47,27 +47,16 @@ app.get("/user", isLoggedIn ,function (req,res) {
   res.render("user", {currentUser: req.user});
 })
 
+app.get("/user2", isLoggedIn ,function (req,res) {
+  console.log(req.user);
+  res.render("user2", {currentUser: req.user});
+})
+
 
 app.get("/secret", function (req,res) {
   res.render("secret");
 })
 
-app.get("/associe", function (req,res) {
-  res.redirect("/user");
-})
-
-
-app.get("/speak/:animal", function (req, res) {
-  res.send("The "+(req.params.animal).toUpperCase()+" says something");
-})
-
-app.get("/dog", function (req, res) {
-  res.send("Doggies");
-})
-
-app.get("/cat", function (req, res) {
-  res.send("P");
-})
 
 app.get("/ejs", function (req, res) {
   res.render("index",{sparta: "THIS IS SPARTA"});
@@ -83,8 +72,13 @@ app.get("/login-error", function(req,res){
 
 // Show things
 app.get("/login", function (req,res) {
-  res.render("login");
+  res.render("login2");
 })
+
+app.get("/login2", function (req,res) {
+  res.render("login2");
+})
+
 
 app.get("/signup", function (req, res){
   res.render("signup")
@@ -121,17 +115,6 @@ app.post("/login", passport.authenticate("local", {successRedirect:"/user", fail
 //  else
 //    redirect (conseiller)
 
-});
-
-
-
-app.get("/repeat/:word/:repet", function (req, res) {
-  var text = "";
-  for(var i =0 ; i<req.params.repet;i++){
-    text += (req.params.word).toUpperCase();
-    text += "   ";
-  }
-res.send(text+"   ");
 });
 
 app.get("*", function (req, res) {
