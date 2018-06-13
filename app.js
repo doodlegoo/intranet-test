@@ -51,12 +51,6 @@ app.get("/user", isLoggedIn ,function (req,res) {
 }) 
 })
 
-app.get("/user2", isLoggedIn ,function (req,res) {
-  console.log(req.user);
-  res.render("user2", {currentUser: req.user});
-})
-
-
 app.get("/secret", function (req,res) {
   res.render("secret");
 })
