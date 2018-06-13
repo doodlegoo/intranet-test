@@ -18,14 +18,18 @@
   <% include partials/conseiller.ejs %>
 <%} %>
 
-<% if(currentUser.role=="god"){ %>
+<% if(currentUser.role=="partenaire"|| currentUser.role=="god"  ){ %>
+  <% include partials/partenaire.ejs %>
+<% } %>
 
-<%} %>
+<% if(currentUser.role=="god"){ %>
+        <p> Salut vince </p>
+<% } %>
 
 
 <div class="row">
 <p>Ressources FTM</p>
-    <button class="btn-warning" href="http://www.afe.gouv.qc.ca/prets-et-boursesetudes-a-temps-plein/calcul-de-laide/simulateur-de-calcul" class="btn" target="_blank">Lien vers l'AFE</button>
+    <a class="btn-warning" href="http://www.afe.gouv.qc.ca/prets-et-boursesetudes-a-temps-plein/calcul-de-laide/simulateur-de-calcul" class="btn" target="_blank">Lien vers l'AFE</a>
 </div>
 
 <div class="row m-5">

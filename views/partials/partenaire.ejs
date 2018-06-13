@@ -2,14 +2,32 @@
 <p>Formulaires</p>
      <a href="https://financetoimieux.typeform.com/to/seakzh?user=<%=currentUser.username%>&name=<%=currentUser.name%>" class="btn btn-primary" target="_blank">Retour sur rencontre</a>
      <a href="https://financetoimieux.typeform.com/to/eGESTs?channel=intranet" class="btn btn-success" target="_blank">Offre bancaire étudiante</a>
-</div>
+  </div>
 
   <% if(currentUser.region=="Gatineau"){ %>
     <a href="">Tableau de suivi <%=currentUser.region %> </a>
   <%} %>
 
-  <% if(currentUser.region==""){ %>
+  <% if(currentUser.region=="Montreal"){ %>
     <a href="">Tableau de suivi <%=currentUser.region %> </a>
   <%} %>
+
+  <% if(currentUser.role=="god"){ %>
+
+    <table>
+      <% leads.forEach(function(lead){ %>
+      <tr>
+        <td><%=lead.fullName %></td>
+        <td><%=lead.phone %></td>
+        <td><%=lead.major %></td>
+        <td><%=lead.school %></td>
+        <td><a href="https://typeform.com">Lien du formulaire</a></td>
+        <td><%=lead.state %></td>
+      </tr>
+      <% }) %>
+    </table> 
+  <%} %>
+
+
 
 

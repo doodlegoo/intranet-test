@@ -8,7 +8,8 @@ var express 		= require("express"),
     bodyParser 		= require("body-parser"),
     LocalStrategy 	= require("passport-local"),
     passportLocalMongoose = require("passport-local-mongoose"),
-    User 		= require("./models/user");
+    User 		= require("./models/user"),
+    LeadGen		= require("./models/leadgen");
 
 // mongoose.connect("mongodb://localhost/ftm_intranet");
 mongoose.connect("mongodb://vince:ftm2018@ds139899.mlab.com:39899/ftm-user");
@@ -39,12 +40,15 @@ ROUTES
 
 app.get("/", function (req, res) {
 //  res.render("home");
-  res.redirect("/login2");
+  res.redirect("/login");
 })
 
 app.get("/user", isLoggedIn ,function (req,res) {
   console.log(req.user);
-  res.render("user", {currentUser: req.user});
+  LeadGen.find({partenaire : req.user.partenaire}, function(err, data){
+  console.log(req.leadgen); 
+    res.render("user", {currentUser: req.user, leads: data});
+}) 
 })
 
 app.get("/user2", isLoggedIn ,function (req,res) {
@@ -65,7 +69,7 @@ app.get("/ejs", function (req, res) {
 app.get("/login-error", function(req,res){
 //  res.send("Erreur de login"); 
 //  window.alert("erreur de login");
-  res.redirect("/login");
+  res.redirect("/*");
 });
 
 // Auth routes
@@ -75,23 +79,28 @@ app.get("/login", function (req,res) {
   res.render("login2");
 })
 
-app.get("/login2", function (req,res) {
-  res.render("login2");
-})
-
-
 app.get("/signup", function (req, res){
-  res.render("signup")
+  res.render("signup");
 
 });
 
 app.get("/logout", function (req, res){
   req.logout();
-  res.redirect("/login")
+  res.redirect("/login");
+});
+
+app.get("/createlead", function (req, res){
+  res.render("createlead");
+//  (new LeadGen({fullName: "Vince"})).save();
+//  res.redirect("/login")
 });
 
 
-// handles things
+
+
+//
+// Handles Login
+//
 app.post("/signup", function(req, res){
   req.body.username;
   req.body.password;
@@ -108,17 +117,6 @@ app.post("/signup", function(req, res){
 });
 
 app.post("/login", passport.authenticate("local", {successRedirect:"/user", failureRedirect:"/login-error"}) ,function(req, res){
-//  if(associe)
-//    redirect(associe)
-//  if (ftm)
-//    redirect(ftm)
-//  else
-//    redirect (conseiller)
-
-});
-
-app.get("*", function (req, res) {
-  res.send("ERROR 404!");
 });
 
 function isLoggedIn(req, res, next){
@@ -127,6 +125,41 @@ function isLoggedIn(req, res, next){
   }
     res.redirect("/login");
 };
+
+//
+// Handles LeadGen
+//
+
+app.post("/createlead",function(req,res){
+
+req.body.fullName;
+
+
+
+(new LeadGen({fullName: req.body.fullName, phone: req.body.phone, major: req.body.major, school: req.body.school, state:'sent', partner: req.body.partner})).save();
+res.redirect("/secret");
+//db.leadgen.insert(({fullName: req.body.fullName});
+
+/*
+  new LeadGen({fullName: req.body.fullName, phone: req.body.phone, major: req.body.major, school: req.body.school, partner: req.body.partner, state = "Envoyé" }), function(err, user){
+    if(err){
+      console.log(err);
+      alert("Erreur de creation");
+      res.redirect("/secret")
+    }
+*/
+});
+
+
+
+
+
+//
+// Handles 404 and port listening
+//
+app.get("*", function (req, res) {
+  res.send("ERROR 404!");
+});
 
 app.listen(process.env.PORT || port, function () {
   console.log("FTM intranet is up and running on "+port+"!");

@@ -1,0 +1,34 @@
+<% include partials/ftm-head.ejs %>
+<form action="/createlead" method="POST" role="createLead" id="leadGen">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="fullname">Nom complet</label>
+      <input type="name" class="form-control" id="fullName" name="fullName" placeholder="Nom complet">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="phone">Téléphone</label>
+      <input type="phone" class="form-control" id="phone" name="phone" placeholder="Téléphone">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="major">Programme </label>
+      <input type="text" class="form-control" id="major" name="major" placeholder="Programme">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="school">École</label>
+      <input type="text" class="form-control" id="school" name="school" placeholder="Université">
+    </div>
+  </div>
+  <div class="form-group">
+      <label for="partner">Partenaire</label>
+      <select id="partner" name="partner" class="form-control">
+        <option selected>...</option>
+        <option>Investor</option>
+        <option>PPTA</option>
+        <option>FTM</option>
+      </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Créer le lead</button>
+</form>
+

@@ -17,11 +17,15 @@
 
 <% if(currentUser.role=="conseiller"|| currentUser.role=="god"  ){ %>
   <% include partials/conseiller.ejs %>
-<%} %>
+<% } %>
+
+<% if(currentUser.role=="partenaire"|| currentUser.role=="god"  ){ %>
+  <% include partials/partenaire.ejs %> 
+<% } %>
 
 <% if(currentUser.role=="god"){ %>
-
-<%} %>
+	<p> Salut vince </p>
+<% } %>
 
 
 
