@@ -1,14 +1,20 @@
 <% include partials/ftm-head.ejs %>
 
 
-<div class="col-md-4"></div>
+<div class="col-md-2"></div>
 			
-<div class="col-md-4">
+<div class="col-md-8">
   <section class="userpage">
-     <img src="ftm.png" class="img-responsive" alt="ftm-logo" />
+     <div class="row">
+       <img src="ftm.png" class="img-responsive center-block" alt="ftm-logo" />
+     </div>
      <h1> Salut <%=currentUser.name %></h1>
 <% if(currentUser.role=="directeur" || currentUser.role=="god" ){ %>
   <% include partials/directeur.ejs %>
+<div class="row">
+<p>Ressources FTM</p>
+    <a class="btn-warning" href="http://www.afe.gouv.qc.ca/prets-et-boursesetudes-a-temps-plein/calcul-de-laide/simulateur-de-calcul" class="btn" target="_blank">Lien vers l'AFE</a>
+</div>
 
 <% } %>
 
@@ -16,6 +22,14 @@
 
 <% if(currentUser.role=="conseiller"|| currentUser.role=="god"  ){ %>
   <% include partials/conseiller.ejs %>
+<div class="row">
+<p>Ressources FTM</p>
+    <a class="btn-warning" href="http://www.afe.gouv.qc.ca/prets-et-boursesetudes-a-temps-plein/calcul-de-laide/simulateur-de-calcul" class="btn" target="_blank">Lien vers l'AFE</a>
+</div>
+
+
+
+
 <%} %>
 
 <% if(currentUser.role=="partenaire"|| currentUser.role=="god"  ){ %>
@@ -26,11 +40,6 @@
         <p> Salut vince </p>
 <% } %>
 
-
-<div class="row">
-<p>Ressources FTM</p>
-    <a class="btn-warning" href="http://www.afe.gouv.qc.ca/prets-et-boursesetudes-a-temps-plein/calcul-de-laide/simulateur-de-calcul" class="btn" target="_blank">Lien vers l'AFE</a>
-</div>
 
 <div class="row m-5">
 <p>Liens utiles</p>
@@ -49,4 +58,4 @@
 
 </div>
 
-<div class="col-md-4"></div>
+<div class="col-md-2"></div>

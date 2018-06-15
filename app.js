@@ -45,9 +45,10 @@ app.get("/", function (req, res) {
 
 app.get("/user", isLoggedIn ,function (req,res) {
   console.log(req.user);
-  LeadGen.find({partenaire : req.user.partenaire}, function(err, data){
+  LeadGen.find({partner: req.user.org}).exec(function(err, data){
+  if(err) throw err;
   console.log(req.leadgen); 
-    res.render("user", {currentUser: req.user, leads: data});
+  res.render("user", {currentUser: req.user, leads: data});
 }) 
 })
 
@@ -98,7 +99,7 @@ app.get("/createlead", function (req, res){
 app.post("/signup", function(req, res){
   req.body.username;
   req.body.password;
-  User.register(new User({username: req.body.username, name: req.body.name, role: req.body.role }), req.body.password, function(err, user){
+  User.register(new User({username: req.body.username, name: req.body.name, role: req.body.role, org: req.body.org }), req.body.password, function(err, user){
     if(err){
       console.log(err);
       alert("Erreur de creation");
@@ -127,8 +128,6 @@ function isLoggedIn(req, res, next){
 app.post("/createlead",function(req,res){
 
 req.body.fullName;
-
-
 
 (new LeadGen({fullName: req.body.fullName, phone: req.body.phone, major: req.body.major, school: req.body.school, state:'sent', partner: req.body.partner})).save();
 res.redirect("/secret");

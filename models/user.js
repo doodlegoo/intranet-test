@@ -7,6 +7,7 @@ var UserSchema = new mongoose.Schema({
   name: String,
   role: String,
   region: String,
+  org: String,
   password: String
 
 }) ;

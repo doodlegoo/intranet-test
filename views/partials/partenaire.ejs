@@ -1,30 +1,29 @@
-<div class="btn-group row">
-<p>Formulaires</p>
-     <a href="https://financetoimieux.typeform.com/to/seakzh?user=<%=currentUser.username%>&name=<%=currentUser.name%>" class="btn btn-primary" target="_blank">Retour sur rencontre</a>
-     <a href="https://financetoimieux.typeform.com/to/eGESTs?channel=intranet" class="btn btn-success" target="_blank">Offre bancaire étudiante</a>
-  </div>
+  <% if(currentUser.role=="partenaire"||currentUser.role=="god" ){ %>
 
-  <% if(currentUser.region=="Gatineau"){ %>
-    <a href="">Tableau de suivi <%=currentUser.region %> </a>
-  <%} %>
-
-  <% if(currentUser.region=="Montreal"){ %>
-    <a href="">Tableau de suivi <%=currentUser.region %> </a>
-  <%} %>
-
-  <% if(currentUser.role=="god"){ %>
-
-    <table>
+<div class="row">
+    <table class="table">
+      <thead>
+      <tr>
+         <th scope="col">Nom</th>
+         <th scope="col">Téléphone</th>
+         <th scope="col">Programme</th>
+         <th scope="col">Université</th>
+         <th scope="col">Retour sur rencontre</th>
+         <th scope="col">Statut</th>
+      </tr>
+      </thead>
+      <tbody>
       <% leads.forEach(function(lead){ %>
       <tr>
-        <td><%=lead.fullName %></td>
+        <td scope="row"><%=lead.fullName %></td>
         <td><%=lead.phone %></td>
         <td><%=lead.major %></td>
         <td><%=lead.school %></td>
-        <td><a href="https://typeform.com">Lien du formulaire</a></td>
+        <td><a href="https://financetoimieux.typeform.com/to/RBD5Y3?user=<%=currentUser.username%>&id=<%=lead.fullName%>">Lien du formulaire</a></td>
         <td><%=lead.state %></td>
       </tr>
       <% }) %>
+      </tbody>
     </table> 
   <%} %>
 
